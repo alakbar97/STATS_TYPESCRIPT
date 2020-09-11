@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var ConsoleReport_1 = require("./reporterTargets/ConsoleReport");
+var WinAnalysis_1 = require("./analyzers/WinAnalysis");
+var Summary_1 = require("./Summary");
+var MatchReader_1 = require("./MatchReader");
+var reader = new MatchReader_1.MatchReader('football.csv');
+reader.read();
+//const summary = Summary.winAnalysisWithHtmlReport("Arsenal");
+var summary = new Summary_1.Summary(new WinAnalysis_1.WinAnalysis('Man City'), new ConsoleReport_1.ConsoleReport());
+summary.buildAndPrintReport(reader.data);
